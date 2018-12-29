@@ -1,0 +1,236 @@
+<div id="container">
+  <div class="header" [style.height.px]="headerHeight">
+    <img src="../assets/testy_white.svg" />
+    <div id="tagline" *ngIf="headerHeight > 175">
+      The modern TypeScript testing framework.
+    </div>
+  </div>
+
+  <div id="content" [style.padding-top.px]="contentPaddingTop + 48">
+    <div class="panel">
+      <h1> What is Testy.Ts? </h1>
+
+      Testy.Ts is a modern TypeScript testing framework.
+    </div>
+
+    <div class="panel">
+      
+      <h1>Installation</h1>
+      <div class="grid">
+        <div class="left">
+          To install Testy.Ts, run one of the following lines.
+        </div>
+
+        <div class="right">
+          <pre class=console>
+$ npm i --save-dev testyts <span class=comment>// To install locally</span>
+$ npm i -g testyts <span class=comment>// To install globally</span></pre>
+        </div>
+      </div>
+
+      <h1>Setup</h1>
+      <div class="grid">
+        <div class="left">
+          To generate a testy.json configuration file, use the following command.
+        </div>
+
+        <div class="right">
+          <pre class=console>
+$ testyts init</pre>
+        </div>
+      </div>
+
+      <h1>Writing your first test</h1>
+      <div class="grid">
+        <div class="left">
+          Writing tests with Testy is simple. Don't forget to export your test suites though. Otherwise, they won't be discovered by
+          the test runner.
+        </div>
+        <div class="right">
+          <pre code>
+@testSuite()
+export class MyTestSuite {{'{'}} 
+
+    @test()
+    quickMaths() {{'{'}}
+        expect.toBeEqual(1 + 1, 2);
+    }
+}</pre>
+        </div>
+      </div>
+
+      <h1>Run those tests</h1>
+      <div class="grid">
+        <div class="left">
+          To run your Testy.Ts tests, simply run the following command. 
+          Testy.Ts uses is the "testy.json" file contained in the current directory by default.
+          Testy will fail if there is no such file.
+        </div>
+
+        <div class="right">
+          <pre class=console>
+$ testyts
+$ testyts --config ./config.json <span class=comment>// Custom config file</span></pre>
+        </div>
+      </div>
+
+      <h1>Setup and teardown methods</h1>
+      <div class="grid">
+        <div class="left">
+          TestyTs provides setup and teardown hooks.
+        </div>
+        <div class="right">
+          <pre code>
+@testSuite()
+export class MyTestSuite {{'{'}}
+  
+    @beforeAll()
+    beforeAll() {{'{'}}
+        // This is executed before all the tests
+    }
+  
+    @beforeEach()
+    beforeEach() {{'{'}}
+        // This is executed before each test
+    }
+  
+    @afterEach()
+    afterEach() {{'{'}}
+        // This is executed after each test
+    }
+    
+    @afterAll()
+    afterAll() {{'{'}}
+        // This is executed after all the tests
+    }
+}</pre>
+        </div>
+      </div>
+
+      <h1>Base test suites</h1>
+      <div class="grid">
+        <div class="left">
+          Okay, this is where stuff gets interesting. TestyTs lets you use inheritance. This means you don't have to duplicate complex
+          setup, teardown and helper functions. You also don't have to put fifty tests in the same class.
+        </div>
+        <div class="right">
+          <pre code>
+class MyBaseTestSuite {{'{'}}
+    // Setup, teardown and helpers extravaganza
+}
+  
+@testSuite()
+class MyTestSuite extends MyBaseTestSuite {{'{'}}
+    // My tests
+}</pre>
+        </div>
+      </div>
+
+      <h1>Testcases</h1>
+      <div class="grid">
+        <div class="left">
+          Testy.Ts allows you to run the same test multiple times with different inputs and expectations. Just pass an array of TestCases
+          to the test decorator.
+
+          <br>
+          <br> A TestCase consists of a name and one or more arguments. The arguments are passed to your test method.
+        </div>
+        <div class="right">
+          <pre code>
+@testSuite()
+export class MyTestSuite {{'{'}}
+
+    @test('My test', [
+          new TestCase('Two plus two is four', 2, 2, 4),
+          new TestCase(`Minus one that's three`, 4, -1, 3)
+    ])
+    onePlusOne(a: number, b: number, result: number) {{'{'}}
+        expect.toBeEqual(a + b, result);
+    }
+}</pre>
+        </div>
+      </div>
+
+      <h1>Asserting</h1>
+      <div class="grid">
+        <div class="left">
+          Testy.Ts comes with a whole bunch of assertion methods and also a dash of syntactic sugar sexyness.
+        </div>
+        <div class="right">
+          <pre code>
+expect.toBeTrue(2 > 1);
+expect.toBeEqual('a', 'a');
+expect.not.toBeEqual('p', 'np');
+expect.toThrow(() => someNastyMethod());
+expect.toBeSorted.inAscendingOrder([0, 1, 1, 2, 3, 5, 8]);
+// More!</pre>
+        </div>
+      </div>
+
+      <h1>Focusing and ignoring tests</h1>
+      <div class="grid">
+        <div class="left">
+          You can ignore tests by adding an x before a test suite or a specific test decorator. Ignored tests will still show up in
+          the test report, but they will be marked as ignored.
+        </div>
+        <div class="right">
+          <pre code>
+@xtestSuite() // This test suite will be ignored
+export class MyTestSuite {{'{'}} 
+  // My tests
+}
+  
+@testSuite()
+export class MyTestSuite {{'{'}}
+
+    @xtest() // This test will be ignored
+    onePlusOne() {{'{'}}
+        // Some test
+    }
+}</pre>
+        </div>
+
+        <div class="left">
+          You can also focus tests by adding an f before a test suite or a specific test decorator. If one test or test suites are
+          focused, only those will be runned. The others will be reported as ignored.
+        </div>
+        <div class="right">
+          <pre code>
+  @ftestSuite() // This test suite will be focused
+  export class MyTestSuite {{'{'}} 
+    // My tests
+  }
+    
+  @testSuite()
+  export class MyTestSuite {{'{'}}
+  
+      @ftest() // This test will be focused
+      onePlusOne() {{'{'}}
+          // Some test
+      }
+  }</pre>
+        </div>
+      </div>
+
+      <h1>Custom test names</h1>
+      <div class="grid">
+        <div class="left">
+          The tests and test suites names are inferred from the method or class name by default. You can specify a custom name if you're into that.
+        </div>
+        <div class="right">
+          <pre code>
+@testSuite('My glorious test suite')
+export class MyTestSuite {{'{'}}
+  
+    @test('Adding one plus one, should equal two')
+    onePlusOne() {{'{'}}
+        // Assert
+        expect.toBeEqual(1 + 1, 2);
+    }
+}</pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

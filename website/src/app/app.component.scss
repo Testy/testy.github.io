@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+}
+
+#container {
+    width: 100%;
+}
+
+#content {
+    max-width: 1000px;
+    min-width: 700px;
+    margin: 0 auto;
+
+    .panel {
+        overflow: visible;
+        margin-bottom: 2rem;
+        line-height: 2rem;
+        margin: 0 25px 20px 25px;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .panel[_ngcontent-c0] .grid[_ngcontent-c0] {
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 45% auto;
+        grid-template-columns: 45% auto;
+        gap: 30px;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    color: white;
+    background: linear-gradient(45deg, #009b55 0%, #0e753f 100%);
+    padding: 4px 20%;
+    box-shadow: 0px -2px 12px rgba(0, 0, 0, 0.75);
+    text-align: center;
+
+    #tagline {
+        margin-left: 20px;
+        font-size: 1.25rem;
+    }
+
+    img {
+        text-align: left;
+        height: 100%;
+        min-width: 100px;
+        min-height: 20px;
+        max-width: 100%;
+        max-height: 175px;
+    }
+    
+}
+
+h1 {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 0.33rem;
+}
+
+pre {
+    background-color: #232323;
+    color: white;
+    font-family: UbuntuMono;
+    line-height: 1.25rem;
+    border-radius: 6px;
+    padding: 0.66rem;
+    width: 100%;
+    overflow-x: auto;
+
+    .comment {
+        font-family: UbuntuMono;
+        user-select: none;
+        color: #b4b4b4;
+        background-color: transparent;
+    }
+}
