@@ -81,7 +81,7 @@ var AppComponent = /** @class */ (function () {
         this.maxHeaderHeight = 250;
         this.scrollOffset = 0;
         this.scrollometer = 0;
-        this.shouldHide = false;
+        this.shouldShow = true;
         this.headerHeight = this.maxHeaderHeight;
         this.contentPaddingTop = this.maxHeaderHeight;
     }
@@ -90,7 +90,7 @@ var AppComponent = /** @class */ (function () {
         Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["interval"])(10).subscribe(function () { return _this.adjustHeader(); });
     };
     AppComponent.prototype.adjustHeader = function () {
-        var headerHeightTarget = this.shouldHide ? this.maxHeaderHeight : this.minHeaderHeight;
+        var headerHeightTarget = this.shouldShow ? this.maxHeaderHeight : this.minHeaderHeight;
         this.headerHeight = this.lerp(this.headerHeight, headerHeightTarget, 0.04);
         var paddingTopTarget = this.scrollOffset < 4 ? this.maxHeaderHeight : this.minPaddingTop;
         this.contentPaddingTop = this.lerp(this.contentPaddingTop, paddingTopTarget, 0.04);
@@ -107,7 +107,7 @@ var AppComponent = /** @class */ (function () {
         else {
             this.scrollometer = difference;
         }
-        this.shouldHide = this.scrollometer < -100 || this.scrollOffset < 4;
+        this.shouldShow = this.scrollometer < -100 || this.scrollOffset < 8;
         this.scrollOffset = scrollOffset;
     };
     __decorate([

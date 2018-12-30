@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
 
     private scrollOffset = 0;
     private scrollometer = 0;
-    private shouldHide = false;
+    private shouldShow = true;
 
     public headerHeight = this.maxHeaderHeight;
     public contentPaddingTop = this.maxHeaderHeight;
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     }
 
     private adjustHeader() {
-        const headerHeightTarget = this.shouldHide ? this.maxHeaderHeight : this.minHeaderHeight;
+        const headerHeightTarget = this.shouldShow ? this.maxHeaderHeight : this.minHeaderHeight;
         this.headerHeight = this.lerp(this.headerHeight, headerHeightTarget, 0.04);
 
         const paddingTopTarget = this.scrollOffset < 4 ? this.maxHeaderHeight : this.minPaddingTop;
@@ -50,8 +50,7 @@ export class AppComponent implements OnInit {
             this.scrollometer = difference;
         }
 
-        this.shouldHide = this.scrollometer < -100 || this.scrollOffset < 4;
-
+        this.shouldShow = this.scrollometer < -100 || this.scrollOffset < 8;
         this.scrollOffset = scrollOffset;
     }
 }
