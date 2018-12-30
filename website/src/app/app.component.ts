@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
         const headerHeightTarget = this.shouldShow ? this.maxHeaderHeight : this.minHeaderHeight;
         this.headerHeight = this.lerp(this.headerHeight, headerHeightTarget, 0.04);
 
-        const paddingTopTarget = this.scrollOffset < 4 ? this.maxHeaderHeight : this.minPaddingTop;
+        const paddingTopTarget = this.scrollOffset < 8 ? this.maxHeaderHeight : this.minPaddingTop;
         this.contentPaddingTop = this.lerp(this.contentPaddingTop, paddingTopTarget, 0.04);
     }
 

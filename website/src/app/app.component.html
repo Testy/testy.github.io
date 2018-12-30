@@ -43,13 +43,30 @@ $ npm i -g testyts <span class=comment>// To install globally</span></pre>
       <h1>Setup</h1>
       <div class="grid">
         <div class="left">
-          To generate a testy.json configuration file, use the following command.
+          To generate a <code>testy.json</code> configuration file, use the following command.
         </div>
 
         <div class="right">
           <pre class=console>
 $ testyts init</pre>
         </div>
+
+        <div class="left">
+          Testy.Ts requires <code>experimentalDecorators</code>. To use breakpoints while debugging in Visual Studio Code,
+          you must enable <code>sourceMap</code>.
+        </div>
+
+        <div class="right">
+          <pre class=console>
+{{'{'}}
+  "compilerOptions": {{'{'}}
+      "target": "es5",
+      "experimentalDecorators": true,
+      "sourceMap": true
+  }
+}</pre>
+        </div>
+
       </div>
 
       <h1>Writing your first test</h1>
@@ -140,11 +157,12 @@ class MyTestSuite extends MyBaseTestSuite {{'{'}}
       <h1>Testcases</h1>
       <div class="grid">
         <div class="left">
-          Testy.Ts allows you to run the same test multiple times with different inputs and expectations. Just pass an array of TestCases
-          to the test decorator.
+          Testy.Ts allows you to run the same test multiple times with different inputs and expectations. Just pass an array of <code>TestCase</code>          to
+          the <code>test</code> decorator.
 
           <br>
-          <br> A TestCase consists of a name and one or more arguments. The arguments are passed to your test method.
+          <br> A <code>TestCase</code> consists of a name and one or more arguments. The arguments are passed to your test
+          method.
         </div>
         <div class="right">
           <pre code>
@@ -181,8 +199,9 @@ expect.toBeSorted.inAscendingOrder([0, 1, 1, 2, 3, 5, 8]);
       <h1>Focusing and ignoring tests</h1>
       <div class="grid">
         <div class="left">
-          You can ignore tests by adding an x before a test suite or a specific test decorator. Ignored tests will still show up in
-          the test report, but they will be marked as ignored.
+          You can ignore tests by adding an
+          <code>x</code> before a test suite or a specific <code>test</code> decorator. Ignored tests will still show up
+          in the test report, but they will be marked as ignored.
         </div>
         <div class="right">
           <pre code>
@@ -202,8 +221,8 @@ export class MyTestSuite {{'{'}}
         </div>
 
         <div class="left">
-          You can also focus tests by adding an f before a test suite or a specific test decorator. If one or more test or test suites
-          are focused, only those will be ran. The others will be reported as ignored.
+          You can also focus tests by adding an <code>f</code> before a test suite or a specific <code>test</code> decorator.
+          If one or more test or test suites are focused, only those will be ran. The others will be reported as ignored.
         </div>
         <div class="right">
           <pre code>
