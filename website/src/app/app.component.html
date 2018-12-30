@@ -1,5 +1,5 @@
 <div id="container">
-  <div class="header" [style.height.px]="headerHeight">
+  <header [style.height.px]="headerHeight">
     <img src="../assets/testy_white.svg" />
     <div id="tagline" *ngIf="headerHeight > 200">
       The modern TypeScript testing framework.
@@ -16,7 +16,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </header>
 
   <div id="content" [style.padding-top.px]="contentPaddingTop + 48">
     <div class="panel">
@@ -244,5 +244,10 @@ export class MyTestSuite {{'{'}}
       </div>
 
     </div>
+
+    <footer>
+      License under the <a href="https://github.com/Testy/TestyTs/blob/master/LICENSE">ISC License</a> (ISC) - Copyright
+      © 2018, Antoine Boisier-Michaud
+    </footer>
   </div>
 </div>

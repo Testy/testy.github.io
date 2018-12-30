@@ -41,12 +41,12 @@
     }
 }
 
-.header {
+header {
     position: fixed;
     width: 100%;
     color: white;
     background: linear-gradient(45deg, #009b55 0%, #0e753f 100%);
-    padding: 4px 20%;
+    padding: 4px 0;
     box-shadow: 0px -2px 12px rgba(0, 0, 0, 0.75);
     text-align: center;
 
@@ -69,7 +69,16 @@
         min-height: 20px;
         max-width: 100%;
         max-height: 175px;
+
+        @media screen and (max-width: 700px) {
+            height: 100%;
+            min-width: 80px;
+            min-height: 20px;
+            max-width: 100%;
+            max-height: 150px;
+        }
     }
+
 
     ul {
         list-style-type: none;
@@ -115,5 +124,22 @@ pre {
         user-select: none;
         color: #b4b4b4;
         background-color: transparent;
+    }
+}
+
+footer {
+    color: rgba(0, 0, 0, 0.35);
+    padding: 15px 20%;
+    text-align: center;
+    font-size: 0.75em;
+    line-height: 1.25em;
+
+    a {
+        color: rgba(0, 0, 0, 0.35);
+        font-size: inherit;
+
+        &:hover {
+            color: rgba(0, 0, 0, 0.45);
+        }
     }
 }
