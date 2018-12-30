@@ -1,8 +1,20 @@
 <div id="container">
   <div class="header" [style.height.px]="headerHeight">
     <img src="../assets/testy_white.svg" />
-    <div id="tagline" *ngIf="headerHeight > 175">
+    <div id="tagline" *ngIf="headerHeight > 200">
       The modern TypeScript testing framework.
+    </div>
+
+    <div class=buttons *ngIf="headerHeight > 225">
+      <ul>
+        <li>
+          <a href="https://github.com/Testy/TestyTs">View on GitHub</a>
+        </li>
+        <li>-</li>
+        <li>
+          <a href="https://marketplace.visualstudio.com/items?itemName=Testy.vscode-testyts-test-adapter">Vs Code Tests Explorer</a>
+        </li>
+      </ul>
     </div>
   </div>
 
@@ -14,7 +26,7 @@
     </div>
 
     <div class="panel">
-      
+
       <h1>Installation</h1>
       <div class="grid">
         <div class="left">
@@ -62,9 +74,8 @@ export class MyTestSuite {{'{'}}
       <h1>Run those tests</h1>
       <div class="grid">
         <div class="left">
-          To run your Testy.Ts tests, simply run the following command. 
-          Testy.Ts uses is the "testy.json" file contained in the current directory by default.
-          Testy will fail if there is no such file.
+          To run your Testy.Ts tests, simply run the following command. Testy.Ts uses is the "testy.json" file contained in the current
+          directory by default. Testy will fail if there is no such file.
         </div>
 
         <div class="right">
@@ -191,8 +202,8 @@ export class MyTestSuite {{'{'}}
         </div>
 
         <div class="left">
-          You can also focus tests by adding an f before a test suite or a specific test decorator. If one or more test or test suites are
-          focused, only those will be ran. The others will be reported as ignored.
+          You can also focus tests by adding an f before a test suite or a specific test decorator. If one or more test or test suites
+          are focused, only those will be ran. The others will be reported as ignored.
         </div>
         <div class="right">
           <pre code>
@@ -215,7 +226,8 @@ export class MyTestSuite {{'{'}}
       <h1>Custom test names</h1>
       <div class="grid">
         <div class="left">
-          The tests and test suites names are inferred from the method or class name by default. You can specify a custom name if you're into that.
+          The tests and test suites names are inferred from the method or class name by default. You can specify a custom name if you're
+          into that.
         </div>
         <div class="right">
           <pre code>
