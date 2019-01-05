@@ -9,6 +9,12 @@
 
 @font-face {
     font-family: 'Montserrat';
+    font-weight: 500;
+    src: url(./assets/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'Montserrat';
     font-weight: 600;
     src: url(./assets/Montserrat-SemiBold.ttf);
 }
@@ -37,3 +43,6 @@ code {
     border-radius: 5px;
     font-weight: 100;
 }
+
+strong { font-weight: 500; }
+

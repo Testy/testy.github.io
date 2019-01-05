@@ -72,7 +72,7 @@ $ testyts init</pre>
       <h1>Writing your first test</h1>
       <div class="grid">
         <div class="left">
-          Writing tests with Testy is simple. Don't forget to export your test suites though. Otherwise, they won't be discovered by
+          Writing tests with Testy.Ty is simple. <strong>Don't forget to export your test suites</strong>. Otherwise, they won't be discovered by
           the test runner.
         </div>
         <div class="right">
@@ -91,8 +91,8 @@ export class MyTestSuite {{'{'}}
       <h1>Run those tests</h1>
       <div class="grid">
         <div class="left">
-          To run your Testy.Ts tests, simply run the following command. Testy.Ts uses is the "testy.json" file contained in the current
-          directory by default. Testy will fail if there is no such file.
+          To run your Testy.Ts tests, simply run the following command. Testy.Ts uses the "testy.json" file contained in the current
+          directory by default. Testy.Ts will fail if there is no such file.
         </div>
 
         <div class="right">
@@ -138,8 +138,8 @@ export class MyTestSuite {{'{'}}
       <h1>Base test suites</h1>
       <div class="grid">
         <div class="left">
-          Okay, this is where stuff gets interesting. Testy.Ts lets you use inheritance. This means you don't have to duplicate complex
-          setup, teardown and helper functions. You also don't have to put fifty tests in the same class.
+          This is where stuff gets interesting. Testy.Ts lets you use inheritance. This means you don't have to duplicate complex
+          setup, teardown and helper functions. You also don't have to put all of your tests in the same class.
         </div>
         <div class="right">
           <pre code>
