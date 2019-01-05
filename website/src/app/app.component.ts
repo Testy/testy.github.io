@@ -8,14 +8,13 @@ import { interval } from 'rxjs';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-    private readonly minHeaderHeight = 48;
-    private readonly minPaddingTop = 100;
+    private readonly minHeaderHeight = 86;
+    private readonly minPaddingTop = 1;
     private readonly maxHeaderHeight = 250;
 
     private scrollOffset = 0;
-    private scrollometer = 0;
-    private shouldShow = true;
 
+    public taglineHeight = 1;
     public headerHeight = this.maxHeaderHeight;
     public contentPaddingTop = this.maxHeaderHeight;
 
@@ -28,7 +27,10 @@ export class AppComponent implements OnInit {
     }
 
     private adjustHeader() {
-        const headerHeightTarget = this.shouldShow ? this.maxHeaderHeight : this.minHeaderHeight;
+        const taglineHeightTarget = this.scrollOffset < 8 ? 1 : 0;
+        this.taglineHeight = this.lerp(this.taglineHeight, taglineHeightTarget, 0.04);
+
+        const headerHeightTarget = this.scrollOffset < 8 ? this.maxHeaderHeight : this.minHeaderHeight;
         this.headerHeight = this.lerp(this.headerHeight, headerHeightTarget, 0.04);
 
         const paddingTopTarget = this.scrollOffset < 8 ? this.maxHeaderHeight : this.minPaddingTop;
@@ -42,15 +44,6 @@ export class AppComponent implements OnInit {
     @HostListener('window:scroll', [])
     onWindowScroll() {
         const scrollOffset = this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
-        const difference = scrollOffset - this.scrollOffset;
-
-        if (Math.sign(difference) === Math.sign(this.scrollometer)) {
-            this.scrollometer += difference;
-        } else {
-            this.scrollometer = difference;
-        }
-
-        this.shouldShow = this.scrollometer < -100 || this.scrollOffset < 8;
         this.scrollOffset = scrollOffset;
     }
 }

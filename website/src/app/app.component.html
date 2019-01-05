@@ -1,11 +1,11 @@
 <div id="container">
   <header [style.height.px]="headerHeight">
     <img src="../assets/testy_white.svg" />
-    <div id="tagline" *ngIf="headerHeight > 200">
+    <div id="tagline" [style.height.em]="taglineHeight" [style.margin-bottom.em]="taglineHeight">
       The modern TypeScript testing framework.
     </div>
 
-    <div class=buttons *ngIf="headerHeight > 225">
+    <div class=buttons>
       <ul>
         <li>
           <a href="https://github.com/Testy/TestyTs">View on GitHub</a>
