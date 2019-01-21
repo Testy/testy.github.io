@@ -77,10 +77,10 @@ $ testyts init</pre>
         </div>
         <div class="right">
           <pre code>
-@testSuite()
+@TestSuite()
 export class MyTestSuite {{'{'}} 
 
-    @test()
+    @Test()
     quickMaths() {{'{'}}
         expect.toBeEqual(1 + 1, 2);
     }
@@ -109,25 +109,25 @@ $ testyts --config ./config.json <span class=comment>// Custom config file</span
         </div>
         <div class="right">
           <pre code>
-@testSuite()
+@TestSuite()
 export class MyTestSuite {{'{'}}
   
-    @beforeAll()
+    @BeforeAll()
     beforeAll() {{'{'}}
         // This is executed before all the tests
     }
   
-    @beforeEach()
+    @BeforeEach()
     beforeEach() {{'{'}}
         // This is executed before each test
     }
   
-    @afterEach()
+    @AfterEach()
     afterEach() {{'{'}}
         // This is executed after each test
     }
     
-    @afterAll()
+    @AfterAll()
     afterAll() {{'{'}}
         // This is executed after all the tests
     }
@@ -147,7 +147,7 @@ class MyBaseTestSuite {{'{'}}
     // Setup, teardown and helpers extravaganza
 }
   
-@testSuite()
+@TestSuite()
 class MyTestSuite extends MyBaseTestSuite {{'{'}}
     // My tests
 }</pre>
@@ -158,7 +158,7 @@ class MyTestSuite extends MyBaseTestSuite {{'{'}}
       <div class="grid">
         <div class="left">
           Testy.Ts allows you to run the same test multiple times with different inputs and expectations. Just pass an array of <code>TestCase</code>          to
-          the <code>test</code> decorator.
+          the <code>Test</code> decorator.
 
           <br>
           <br> A <code>TestCase</code> consists of a name and one or more arguments. The arguments are passed to your test
@@ -166,10 +166,10 @@ class MyTestSuite extends MyBaseTestSuite {{'{'}}
         </div>
         <div class="right">
           <pre code>
-@testSuite()
+@TestSuite()
 export class MyTestSuite {{'{'}}
 
-    @test('My test', [
+    @Test('My test', [
           new TestCase('Two plus two is four', 2, 2, 4),
           new TestCase(`Minus one that's three`, 4, -1, 3)
     ])
@@ -200,20 +200,20 @@ expect.toBeSorted.inAscendingOrder([0, 1, 1, 2, 3, 5, 8]);
       <div class="grid">
         <div class="left">
           You can ignore tests by adding an
-          <code>x</code> before a test suite or a specific <code>test</code> decorator. Ignored tests will still show up
+          <code>X</code> before a test suite or a specific <code>Test</code> decorator. Ignored tests will still show up
           in the test report, but they will be marked as ignored.
         </div>
         <div class="right">
           <pre code>
-@xtestSuite() // This test suite will be ignored
+@XTestSuite() // This test suite will be ignored
 export class MyTestSuite {{'{'}} 
   // My tests
 }
   
-@testSuite()
+@TestSuite()
 export class MyTestSuite {{'{'}}
 
-    @xtest() // This test will be ignored
+    @XTest() // This test will be ignored
     onePlusOne() {{'{'}}
         // Some test
     }
@@ -221,20 +221,20 @@ export class MyTestSuite {{'{'}}
         </div>
 
         <div class="left">
-          You can also focus tests by adding an <code>f</code> before a test suite or a specific <code>test</code> decorator.
+          You can also focus tests by adding an <code>F</code> before a test suite or a specific <code>Test</code> decorator.
           If one or more test or test suites are focused, only those will be ran. The others will be reported as ignored.
         </div>
         <div class="right">
           <pre code>
-  @ftestSuite() // This test suite will be focused
+  @FTestSuite() // This test suite will be focused
   export class MyTestSuite {{'{'}} 
     // My tests
   }
     
-  @testSuite()
+  @TestSuite()
   export class MyTestSuite {{'{'}}
   
-      @ftest() // This test will be focused
+      @FTest() // This test will be focused
       onePlusOne() {{'{'}}
           // Some test
       }
@@ -250,10 +250,10 @@ export class MyTestSuite {{'{'}}
         </div>
         <div class="right">
           <pre code>
-@testSuite('My glorious test suite')
+@TestSuite('My glorious test suite')
 export class MyTestSuite {{'{'}}
   
-    @test('Adding one plus one, should equal two')
+    @Test('Adding one plus one, should equal two')
     onePlusOne() {{'{'}}
         // Assert
         expect.toBeEqual(1 + 1, 2);
@@ -266,7 +266,7 @@ export class MyTestSuite {{'{'}}
 
     <footer>
       License under the <a href="https://github.com/Testy/TestyTs/blob/master/LICENSE">ISC License</a> (ISC) - Copyright
-      © 2018, Antoine Boisier-Michaud
+      © 2019, Antoine Boisier-Michaud
     </footer>
   </div>
 </div>
