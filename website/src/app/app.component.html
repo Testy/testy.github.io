@@ -12,7 +12,8 @@
         </li>
         <li>-</li>
         <li>
-          <a href="https://marketplace.visualstudio.com/items?itemName=Testy.vscode-testyts-test-adapter">Vs Code Tests Explorer</a>
+          <a href="https://marketplace.visualstudio.com/items?itemName=Testy.vscode-testyts-test-adapter">Vs Code Tests
+            Explorer</a>
         </li>
       </ul>
     </div>
@@ -52,7 +53,8 @@ $ testyts init</pre>
         </div>
 
         <div class="left">
-          Testy.Ts requires <code>experimentalDecorators</code>. To use breakpoints while debugging in Visual Studio Code,
+          Testy.Ts requires <code>experimentalDecorators</code>. To use breakpoints while debugging in Visual Studio
+          Code,
           you must enable <code>sourceMap</code>.
         </div>
 
@@ -72,7 +74,8 @@ $ testyts init</pre>
       <h1>Writing your first test</h1>
       <div class="grid">
         <div class="left">
-          Writing tests with Testy.Ty is simple. <strong>Don't forget to export your test suites</strong>. Otherwise, they won't be discovered by
+          Writing tests with Testy.Ty is simple. <strong>Don't forget to export your test suites</strong>. Otherwise,
+          they won't be discovered by
           the test runner.
         </div>
         <div class="right">
@@ -91,7 +94,8 @@ export class MyTestSuite {{'{'}}
       <h1>Run those tests</h1>
       <div class="grid">
         <div class="left">
-          To run your Testy.Ts tests, simply run the following command. Testy.Ts uses the "testy.json" file contained in the current
+          To run your Testy.Ts tests, simply run the following command. Testy.Ts uses the "testy.json" file contained
+          in the current
           directory by default. Testy.Ts will fail if there is no such file.
         </div>
 
@@ -138,7 +142,8 @@ export class MyTestSuite {{'{'}}
       <h1>Base test suites</h1>
       <div class="grid">
         <div class="left">
-          This is where stuff gets interesting. Testy.Ts lets you use inheritance. This means you don't have to duplicate complex
+          This is where stuff gets interesting. Testy.Ts lets you use inheritance. This means you don't have to
+          duplicate complex
           setup, teardown and helper functions. You also don't have to put all of your tests in the same class.
         </div>
         <div class="right">
@@ -154,14 +159,53 @@ class MyTestSuite extends MyBaseTestSuite {{'{'}}
         </div>
       </div>
 
+      <h1>Asynchronous stuff</h1>
+      <div class="grid">
+        <div class="left">
+          Asynchronous tests, setup and teardown methods are supported out of the box. Just make your method async.
+        </div>
+        <div class="right">
+          <pre code>
+@TestSuite()
+export class MyTestSuite {{'{'}}
+
+    @Test()
+    async asyncTest() {{'{'}}
+        // Asynchronous stuff       
+    }
+}</pre>
+        </div>
+      </div>
+
+
+      <h1>Timeouts</h1>
+      <div class="grid">
+        <div class="left">
+          If a test is taking too long to complete, it will fail automatically. The default timeout it 2000 ms, but you
+          can configure it.
+        </div>
+        <div class="right">
+          <pre code>
+@TestSuite()
+export class MyTestSuite {{'{'}}
+    @Test(undefined, undefined, 10000) // Really slow test
+    slowTest() {{'{'}}
+        // Some test
+    }
+}</pre>
+        </div>
+      </div>
+
       <h1>Testcases</h1>
       <div class="grid">
         <div class="left">
-          Testy.Ts allows you to run the same test multiple times with different inputs and expectations. Just pass an array of <code>TestCase</code>          to
+          Testy.Ts allows you to run the same test multiple times with different inputs and expectations. Just pass an
+          array of <code>TestCase</code> to
           the <code>Test</code> decorator.
 
           <br>
-          <br> A <code>TestCase</code> consists of a name and one or more arguments. The arguments are passed to your test
+          <br> A <code>TestCase</code> consists of a name and one or more arguments. The arguments are passed to your
+          test
           method.
         </div>
         <div class="right">
@@ -200,7 +244,8 @@ expect.toBeSorted.inAscendingOrder([0, 1, 1, 2, 3, 5, 8]);
       <div class="grid">
         <div class="left">
           You can ignore tests by adding an
-          <code>X</code> before a test suite or a specific <code>Test</code> decorator. Ignored tests will still show up
+          <code>X</code> before a test suite or a specific <code>Test</code> decorator. Ignored tests will still show
+          up
           in the test report, but they will be marked as ignored.
         </div>
         <div class="right">
@@ -221,8 +266,10 @@ export class MyTestSuite {{'{'}}
         </div>
 
         <div class="left">
-          You can also focus tests by adding an <code>F</code> before a test suite or a specific <code>Test</code> decorator.
-          If one or more test or test suites are focused, only those will be ran. The others will be reported as ignored.
+          You can also focus tests by adding an <code>F</code> before a test suite or a specific <code>Test</code>
+          decorator.
+          If one or more test or test suites are focused, only those will be ran. The others will be reported as
+          ignored.
         </div>
         <div class="right">
           <pre code>
@@ -245,7 +292,8 @@ export class MyTestSuite {{'{'}}
       <h1>Custom test names</h1>
       <div class="grid">
         <div class="left">
-          The tests and test suites names are inferred from the method or class name by default. You can specify a custom name if you're
+          The tests and test suites names are inferred from the method or class name by default. You can specify a
+          custom name if you're
           into that.
         </div>
         <div class="right">
@@ -261,11 +309,17 @@ export class MyTestSuite {{'{'}}
 }</pre>
         </div>
       </div>
-
+      <h1>Still not convinced?</h1>
+      <div>
+        Here's a <a href="https://repl.it/@Aboisier/TestyTs-Playground">REPL</a> you can use to play around with Testy.Ts online, no strings attached.
+      </div>
+      <div class="center">
+        <a class=btn target="_blank" href="https://repl.it/@Aboisier/TestyTs-Playground"> <i class="fas fa-external-link-alt"></i> Try <strong>Testy.Ts</strong> on repl.it!</a>
+      </div>
     </div>
-
     <footer>
-      License under the <a href="https://github.com/Testy/TestyTs/blob/master/LICENSE">ISC License</a> (ISC) - Copyright
+      License under the <a href="https://github.com/Testy/TestyTs/blob/master/LICENSE">ISC License</a> (ISC) -
+      Copyright
       © 2019, Antoine Boisier-Michaud
     </footer>
   </div>
